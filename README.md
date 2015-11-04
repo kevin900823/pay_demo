@@ -1,4 +1,4 @@
-# 客户继承工程示例 Eclipse Demo 工程
+# 客户集成工程示例 Eclipse Demo 工程
 
 ## 简介
 
