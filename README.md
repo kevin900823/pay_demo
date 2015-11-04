@@ -206,6 +206,11 @@ public class WDPayResult implements WDResult {
 																		|WDPayResult.FAIL_ERR_FROM_CHANNEL = "FAIL_ERR_FROM_CHANNEL";从第三方app支付渠道返回的错误信息（支付渠道返回失败）
 
 ~~~
+##关于渠道<br>
+Android SDK 目前适用于 alipay、weixin这三个渠道<br>
+######对应本SDK:<br>
+* weixin -- WDReqParams.WDChannelTypes.wepay<br>
+* alipay -- WDReqParams.WDChannelTypes.alipay<br>
 
 
 
