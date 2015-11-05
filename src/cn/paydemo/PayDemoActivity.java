@@ -71,22 +71,15 @@ public class PayDemoActivity extends Activity {
                     else if(result.equals(WDPayResult.RESULT_FAIL)) {
                         Toast.makeText(PayDemoActivity.this, "支付失败, 原因: " + bcPayResult.getErrMsg()
                                 + ", " + bcPayResult.getDetailInfo(), Toast.LENGTH_LONG).show();
-//                    } else if (result.equals(WDPayResult.RESULT_UNKNOWN)) {
-//                        //可能出现在支付宝8000返回状态
-//                        Toast.makeText(MainActivity.this, "订单状态未知", Toast.LENGTH_LONG).show();
                     } else if(result.equals(WDPayResult.FAIL_UNKNOWN_WAY)){
                     	Toast.makeText(PayDemoActivity.this, "未知支付渠道", Toast.LENGTH_LONG).show();
                     } else if(result.equals(WDPayResult.FAIL_WEIXIN_VERSION_ERROR)){
-                    	
                     	Toast.makeText(PayDemoActivity.this, "针对微信 支付版本错误（版本不支持）", Toast.LENGTH_LONG).show();
                     } else if(result.equals(WDPayResult.FAIL_EXCEPTION)){
-                    	
                     	Toast.makeText(PayDemoActivity.this, "支付过程中的Exception", Toast.LENGTH_LONG).show();
                     } else if(result.equals(WDPayResult.FAIL_ERR_FROM_CHANNEL)){
-                    	
                     	Toast.makeText(PayDemoActivity.this, "从第三方app支付渠道返回的错误信息，原因: " + bcPayResult.getErrMsg(), Toast.LENGTH_LONG).show();
                     } else if(result.equals(WDPayResult.FAIL_INVALID_PARAMS)){
-                    	
                     	Toast.makeText(PayDemoActivity.this, "参数不合法造成的支付失败", Toast.LENGTH_LONG).show();
                     }else if(result.equals(WDPayResult.RESULT_PAYING_UNCONFIRMED)){
                     	Toast.makeText(PayDemoActivity.this, "表示支付中，未获取确认信息", Toast.LENGTH_LONG).show();
