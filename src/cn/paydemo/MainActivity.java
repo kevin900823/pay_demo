@@ -1,5 +1,7 @@
 package cn.paydemo;
 
+import cn.paydemo.appnative.PayDemoActivity;
+import cn.paydemo.web.PayWebActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,7 +50,7 @@ public class MainActivity extends Activity implements OnClickListener,
 			
 			break;
 		case 1:
-			Toast.makeText(MainActivity.this, "¾´ÇëÆÚ´ý£¡", Toast.LENGTH_LONG).show();
+			startActivity(new Intent(MainActivity.this, PayWebActivity.class));
 			break;
 		case 2:
 			Toast.makeText(MainActivity.this, "¾´ÇëÆÚ´ý£¡", Toast.LENGTH_LONG).show();

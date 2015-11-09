@@ -1,4 +1,4 @@
-package cn.paydemo;
+package cn.paydemo.appnative;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +17,12 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+import cn.paydemo.PayMethodListItem;
+import cn.paydemo.R;
+import cn.paydemo.R.drawable;
+import cn.paydemo.R.id;
+import cn.paydemo.R.layout;
+import cn.paydemo.R.menu;
 import cn.wd.checkout.CheckOut;
 import cn.wd.checkout.WDPay;
 import cn.wd.checkout.processor.WDCallBack;
@@ -130,7 +136,7 @@ public class PayDemoActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shopping_cart);
+        setContentView(R.layout.activity_native_pay);
         
         // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 、 第三个参数设置日志是否打印
         CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB", true);

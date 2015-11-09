@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greybg"
+    tools:context=".ShoppingCartActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/topTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="统一收银台支付模块"
+        android:background="@color/bluebg"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <WebView
+        android:id="@+id/wp_wb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
+
+</RelativeLayout>
