@@ -33,6 +33,8 @@ import cn.wd.checkout.processor.WDResult;
 
 public class PayDemoActivity extends Activity {
 
+	private final String submerno ="子商户号";
+	
     private ListView payMethod;
 	private ProgressDialog loadingDialog;
 
@@ -143,9 +145,9 @@ public class PayDemoActivity extends Activity {
         
         
         payMethod = (ListView) this.findViewById(R.id.payMethod);
-        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay};
-        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈"};
-        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费"};
+        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay};
+        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈"};
+        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费"};
         PayMethodListItem adapter = new PayMethodListItem(this, payIcons, payNames, payDescs);
         payMethod.setAdapter(adapter);
         
@@ -190,7 +192,7 @@ public class PayDemoActivity extends Activity {
 
                         mapOptional.put("testkey1", "测试value值1");   //map的key暂时不支持中文
                         
-                        WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wepay, 
+                        WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wepay, submerno,
                         		goodsTitle,               //订单标题
                     			goodsDesc,
                                 i,                           //订单金额(分)
@@ -205,7 +207,7 @@ public class PayDemoActivity extends Activity {
                     	//对于微信支付, 手机内存太小会有OutOfResourcesException造成的卡顿, 以致无法完成支付
                     	//这个是微信自身存在的问题
                     	
-                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wepay, 
+                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wepay, submerno,
                     			goodsTitle,               //订单标题
                     			goodsDesc,
                     			i,                           //订单金额(分)
@@ -223,7 +225,7 @@ public class PayDemoActivity extends Activity {
                         mapOptional.put("consumptioncode", "consumptionCode");
                         mapOptional.put("money", "2");
                         
-                        WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.alipay, 
+                        WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.alipay, submerno,
                         		goodsTitle,               //订单标题
                     			goodsDesc,
                                 i,                           //订单金额(分)
@@ -243,39 +245,7 @@ public class PayDemoActivity extends Activity {
                     	mapOptional.put("money", "2");
                     	
                     	
-                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.alipay, 
-                    			goodsTitle,               //订单标题
-                    			goodsDesc,
-                    			i,                           //订单金额(分)
-                    			orderTitle,  //订单流水号
-                    			orderDesc,
-                    			null,            //扩展参数(可以null)
-                    			handler);
-                    	
-                    	break;
-                    case 4: //银联支付
-                    	loadingDialog.show();
-                    	
-                    	mapOptional = new HashMap<String, String>();
-                    	mapOptional.put("paymentid", "2015090600255180");
-                    	mapOptional.put("consumptioncode", "consumptionCode");
-                    	mapOptional.put("money", "2");
-                    	
-                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.uppay, 
-                    			goodsTitle,               //订单标题
-                    			goodsDesc,
-                    			i,                           //订单金额(分)
-                    			orderTitle,  //订单流水号
-                    			orderDesc,
-                    			null,            //扩展参数(可以null)
-                    			bcCallback);
-                    	
-                    	
-                    	break;
-                    case 5: //银联支付
-                    	loadingDialog.show();
-                    	
-                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.uppay, 
+                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.alipay, submerno,
                     			goodsTitle,               //订单标题
                     			goodsDesc,
                     			i,                           //订单金额(分)
