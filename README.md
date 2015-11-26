@@ -73,7 +73,7 @@ android:windowSoftInputMode="adjustResize|stateHidden" />
 ~~~
 ####参数说明:<br>
 * channelType 支付类型 对于支付手机APP端目前只支持wepay(微信支付手机原生APP支付) alipay（支付宝手机原生APP支付） 
-* param submerno	子商户号 区别接入商户，商户在健康云（医药云）注册的商户号
+* submerno	子商户号 区别接入商户，商户在健康云（医药云）注册的商户号
 * billTitle 商品名称, 32个字节内, 汉字以2个字节计
 * goods_desc 商品描述
 * billTotalFee 支付金额，以分为单位，必须是正整数
@@ -98,7 +98,7 @@ android:windowSoftInputMode="adjustResize|stateHidden" />
 ~~~
 ####参数说明: <br>
 * channelType 支付类型 对于支付手机APP端目前只支持WX_APP, ALI_APP, UN_APP 
-* param submerno	子商户号 区别接入商户，商户在健康云（医药云）注册的商户号
+* submerno	子商户号 区别接入商户，商户在健康云（医药云）注册的商户号
 * billTitle 商品名称, 32个字节内, 汉字以2个字节计 
 * goods_desc 商品描述 
 * billTotalFee 支付金额，以分为单位，必须是正整数 
