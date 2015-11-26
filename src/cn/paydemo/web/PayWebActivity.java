@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
  *
  */
 public class PayWebActivity extends Activity {
-	private static final String DEFAULT_URL = "http://10.1.64.205:18001/WebCashierDesk/text.jsp"; 
+	private static final String DEFAULT_URL = "http://101.230.192.79/WebCashierDesk/text.jsp"; 
 	private WebView pw_WV;
 
 	@Override

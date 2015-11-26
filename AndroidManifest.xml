@@ -64,6 +64,17 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <!-- alipay sdk end -->
         
+        <!-- union pay sdk begin -->
+        <activity
+            android:name="cn.wd.checkout.WDUnionPaymentActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- union pay sdk end -->
+        
     </application>
 
 </manifest>
