@@ -1,14 +1,7 @@
 package cn.paydemo;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.http.HttpResponse;
-
 import cn.paydemo.appnative.PayDemoActivity;
-import cn.paydemo.net.WDHttpClientUtil;
 import cn.paydemo.web.PayWebActivity;
-import cn.wd.checkout.WDSecurityUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,29 +26,7 @@ public class MainActivity extends Activity implements OnClickListener,
 		
 		initView();
 		
-//		initData();
-		
 	}
-	private void initData() {
-		// TODO Auto-generated method stub
-		
-		HttpResponse response = WDHttpClientUtil.httpPost("http://101.230.192.79/Merwork/GetWorkKey", transToBillReqMapParams());
-		
-		
-	}
-	
-	/**
-     * 将实例转化成符合后台请求的键值对
-     * 用于以json方式post请求
-     */
-    public Map<String, Object> transToBillReqMapParams(){
-        Map<String, Object> params = new HashMap<String, Object>(2);
-        params.put("appid", "wd2015tst001");
-        params.put("appsecret", "6dpz8k5820o4cj315h894gx0dj0vaxa7");
-
-        return params;
-    }
-	
 	private void initView() {
 		Integer[] payIcons = new Integer[]{R.drawable.icon_app_pay,R.drawable.icon_hybrid_pay, R.drawable.icon_scan_pay};
 		final String[] payNames = new String[]{"APP原生支付","手机网页支付", "扫码支付"};
