@@ -33,8 +33,12 @@ import cn.wd.checkout.processor.WDResult;
 
 public class PayDemoActivity extends Activity {
 
-	private final String submerno ="子商户号";
+
+//填写当前app 对应的商户号
+	private final String submerno ="wdtstsub00001";
 	
+
+
     private ListView payMethod;
 	private ProgressDialog loadingDialog;
 
