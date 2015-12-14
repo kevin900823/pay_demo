@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -13,6 +14,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -37,12 +39,10 @@ public class PayDemoActivity extends Activity {
 //填写当前app 对应的商户号
 	private final String submerno ="wdtstsub00001";
 	
-
-
     private ListView payMethod;
 	private ProgressDialog loadingDialog;
 
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyymmddhhss", Locale.CHINA);
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHss", Locale.CHINA);
     SimpleDateFormat simpleDateFormattemp = new SimpleDateFormat("SSS", Locale.CHINA);
 /**
  * 
@@ -72,8 +72,7 @@ public class PayDemoActivity extends Activity {
             PayDemoActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                	//此处关闭loading界面
-                	loadingDialog.dismiss();
+                	CloesLoading();
                     String result = bcPayResult.getResult();
                     Log.i("demo", "done   result="+result);
                     if (result.equals(WDPayResult.RESULT_SUCCESS))
@@ -105,8 +104,7 @@ public class PayDemoActivity extends Activity {
     
     Handler handler = new Handler(){
     	public void handleMessage(android.os.Message msg) {
-    		//此处关闭loading界面
-            loadingDialog.dismiss();
+    		CloesLoading();
             
             String info="";
     		switch (msg.what) {
@@ -130,6 +128,7 @@ public class PayDemoActivity extends Activity {
     	};
     };
     
+ 
     
     
 	private EditText mGoodsMoney;
@@ -143,15 +142,16 @@ public class PayDemoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_native_pay);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         
         // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 、 第三个参数设置日志是否打印
         CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB", true);
         
         
         payMethod = (ListView) this.findViewById(R.id.payMethod);
-        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay};
-        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈"};
-        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费"};
+        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay};
+        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈"};
+        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费"};
         PayMethodListItem adapter = new PayMethodListItem(this, payIcons, payNames, payDescs);
         payMethod.setAdapter(adapter);
         
@@ -181,11 +181,14 @@ public class PayDemoActivity extends Activity {
             	String orderTitle = mOrderTitle.getText().toString().trim();
             	mOrderTitle.setText(getBillNum());
             	String orderDesc = mOrderTitleDesc.getText().toString().trim();
-            	Long i = 1L ;
+            	Long i = 0l ;
             	if(isNumeric(money)){
-            	Double d = Double.parseDouble(money);
-            	 i=  (long) (d*100);
+            		i = Long.parseLong(money);
+            	}else{
+            		Toast.makeText(PayDemoActivity.this, "请输入正确的交易金额（单位：分）", Toast.LENGTH_LONG).show();
+            		return;
             	}
+            	
             	
                 switch (position) {
                     case 0: //微信
@@ -259,11 +262,57 @@ public class PayDemoActivity extends Activity {
                     			handler);
                     	
                     	break;
+                    case 4: //银联支付
+                    	loadingDialog.show();
+                    	
+                    	mapOptional = new HashMap<String, String>();
+                    	mapOptional.put("paymentid", "2015090600255180");
+                    	mapOptional.put("consumptioncode", "consumptionCode");
+                    	mapOptional.put("money", "2");
+                    	
+                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.uppay, 
+                    			submerno,
+                    			goodsTitle,               //订单标题
+                    			goodsDesc,
+                    			i,                           //订单金额(分)
+                    			orderTitle,  //订单流水号
+                    			orderDesc,
+                    			null,            //扩展参数(可以null)
+                    			bcCallback);
+                    	
+                    	
+                    	break;
+                    case 5: //银联支付
+                    	loadingDialog.show();
+                    	
+                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.uppay, 
+                    			submerno,
+                    			goodsTitle,               //订单标题
+                    			goodsDesc,
+                    			i,                           //订单金额(分)
+                    			orderTitle,  //订单流水号
+                    			orderDesc,
+                    			null,            //扩展参数(可以null)
+                    			handler);
+                    	
+                    	break;
                     default:
                 }
             }
         });
     }
+	
+	   public void onResume() {
+		   super.onResume();
+	    	CloesLoading();
+	    }
+
+	private void CloesLoading() {
+		if(loadingDialog!=null && loadingDialog.isShowing()){
+			//此处关闭loading界面
+		    loadingDialog.dismiss();
+		}
+	};
 	 String getBillNum() {
 	        return "974"+simpleDateFormat.format(new Date())+simpleDateFormattemp.format(new Date())+"and";
 	    }

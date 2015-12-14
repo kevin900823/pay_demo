@@ -51,12 +51,21 @@
                 android:id="@+id/edt_main_money"
                 android:layout_marginTop="10dp"
                 android:layout_width="0dip"
-                    android:layout_weight="0.7"
+                    android:layout_weight="0.6"
                 android:layout_height="wrap_content"
-                android:text=" 0.01 "
+                android:lines="1"
+                android:text="1"
                 android:textSize="16sp"
                 android:inputType="numberDecimal"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="/分" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -86,6 +95,7 @@
                     android:layout_weight="0.7"
                     android:layout_height="wrap_content"
                     android:text="自定义商品标题"
+                    android:lines="1"
                     android:textSize="16sp" />
             </LinearLayout>
             <LinearLayout
@@ -106,6 +116,7 @@
                     android:layout_weight="0.7"
                     android:layout_height="wrap_content"
                     android:text="自定义商品描述"
+                    android:lines="1"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -127,6 +138,7 @@
                     android:layout_weight="0.7"
                     android:layout_height="wrap_content"
                     android:text="商户自定义订单号"
+                    android:lines="1"
                     android:textSize="16sp"/>
 
             </LinearLayout>
@@ -148,6 +160,7 @@
                     android:layout_weight="0.7"
                     android:layout_height="wrap_content"
                     android:text="订单号描述"
+                    android:lines="1"
                     android:textSize="16sp"/>
 
             </LinearLayout>

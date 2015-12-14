@@ -1,9 +1,17 @@
 package cn.paydemo;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.http.HttpResponse;
+
 import cn.paydemo.appnative.PayDemoActivity;
+import cn.paydemo.net.WDHttpClientUtil;
 import cn.paydemo.web.PayWebActivity;
+import cn.wd.checkout.WDSecurityUtil;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,7 +34,21 @@ public class MainActivity extends Activity implements OnClickListener,
 		
 		initView();
 		
+		
 	}
+	
+	/**
+     * 将实例转化成符合后台请求的键值对
+     * 用于以json方式post请求
+     */
+    public Map<String, Object> transToBillReqMapParams(){
+        Map<String, Object> params = new HashMap<String, Object>(2);
+        params.put("appid", "wd2015tst001");
+        params.put("appsecret", "6dpz8k5820o4cj315h894gx0dj0vaxa7");
+
+        return params;
+    }
+	
 	private void initView() {
 		Integer[] payIcons = new Integer[]{R.drawable.icon_app_pay,R.drawable.icon_hybrid_pay, R.drawable.icon_scan_pay};
 		final String[] payNames = new String[]{"APP原生支付","手机网页支付", "扫码支付"};
@@ -50,7 +72,13 @@ public class MainActivity extends Activity implements OnClickListener,
 			
 			break;
 		case 1:
-			startActivity(new Intent(MainActivity.this, PayWebActivity.class));
+//			startActivity(new Intent(MainActivity.this, PayWebActivity.class));
+			 Intent intent= new Intent(); 
+			    intent.setAction("android.intent.action.VIEW");   
+			    Uri content_url = Uri.parse("http://101.230.192.79/WebCashierDesk/text.jsp");   
+			    intent.setData(content_url);  
+			    startActivity(intent);
+			
 			break;
 		case 2:
 			Toast.makeText(MainActivity.this, "敬请期待！", Toast.LENGTH_LONG).show();
