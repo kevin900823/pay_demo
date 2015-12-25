@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements OnClickListener,
 //			startActivity(new Intent(MainActivity.this, PayWebActivity.class));
 			 Intent intent= new Intent(); 
 			    intent.setAction("android.intent.action.VIEW");   
-			    Uri content_url = Uri.parse("http://101.230.192.79/WebCashierDesk/text.jsp");   
+			    Uri content_url = Uri.parse(DEFAULT_URL);   
 			    intent.setData(content_url);  
 			    startActivity(intent);
 			
@@ -88,7 +88,9 @@ public class MainActivity extends Activity implements OnClickListener,
 			break;
 		}
 	}
-
+//	private static final String DEFAULT_URL = "http://10.1.64.205:18001/WebCashierDesk/text.jsp"; 
+//	private static final String DEFAULT_URL = "http://cashtest.wdepay.cn/WebCashierDesk/text.jsp" ;
+  private static final String DEFAULT_URL = "http://cash.wdepay.cn/WebCashierDesk/text.jsp" ;
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
