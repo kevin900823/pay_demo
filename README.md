@@ -10,14 +10,15 @@ Android SDK 要求 Android 2.3 及以上版本
 ## 注意事项
 该SDK可能会与其他第三方jar包冲突，当同时使用这些jar包的时候用户需要根据情况判断保留哪一方的jar包。 libs 目录下的是 jar 文件。
 
-## 版本1.0.2
+## 版本1.0.3
 待更新
 
 ## 配置初始化
 依赖包<br>
 * 微信支付依赖包： libammsdk.jar<br>
-* 支付宝支付依赖包： alipaysdk.jar、alipaysecsdk.jar、alipayutdid.jar <br>
-* 收银台 所需依赖包： tysyt_205.jar、gson-2.2.4.jar <br>
+* 支付宝支付依赖包： alipaySdk-20151112.jar <br>
+* 银联支付依赖包：UPPayAssistEx.jar 依赖安卓包：unionpay.apk <br>
+* 收银台 所需依赖包： checkout_cash.jar、gson-2.2.4.jar <br>
 以上 jar 包位置在下载目录的 lib/libs 请确保gson 版本够高<br>
 权限声明<br>
 ~~~ xml
@@ -48,6 +49,19 @@ android:windowSoftInputMode="adjustResize|stateHidden" />
       android:exported="true"
       android:targetActivity="cn.wd.checkout.WDWechatPaymentActivity" />
 ~~~
+对于银联支付，需要添加<br>
+~~~xml
+<activity
+            android:name="cn.wd.checkout.WDUnionPaymentActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+~~~ 
+* 注意事项
+ 在项目根目录创建 assets 放入 银联在线支付服务安卓包 unionpay.apk <br>
+ （可见demo/paydemo/assets ）另可在银联官网下载<br>
+
 ##开始接入<br>
 ~~~java 
   // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 、 第三个参数设置日志是否打印
@@ -211,10 +225,11 @@ public class WDPayResult implements WDResult {
 
 ~~~
 ##关于渠道<br>
-Android SDK 目前适用于 alipay、weixin这三个渠道<br>
+Android SDK 目前适用于 alipay（支付宝）、weixin（微信）、uppay（银联）这三个渠道<br>
 ######对应本SDK:<br>
 * weixin -- WDReqParams.WDChannelTypes.wepay<br>
 * alipay -- WDReqParams.WDChannelTypes.alipay<br>
+* uppay -- WDReqParams.WDChannelTypes.uppay
 
 
 
