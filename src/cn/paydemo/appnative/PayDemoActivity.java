@@ -2,10 +2,7 @@ package cn.paydemo.appnative;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -21,16 +18,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import cn.paydemo.PayMethodListItem;
 import cn.paydemo.R;
-import cn.paydemo.R.drawable;
-import cn.paydemo.R.id;
-import cn.paydemo.R.layout;
-import cn.paydemo.R.menu;
 import cn.wd.checkout.CheckOut;
 import cn.wd.checkout.WDPay;
 import cn.wd.checkout.processor.WDCallBack;
 import cn.wd.checkout.processor.WDPayResult;
 import cn.wd.checkout.processor.WDReqParams;
-import cn.wd.checkout.processor.WDReqParams.WDChannelTypes;
 import cn.wd.checkout.processor.WDResult;
 
 public class PayDemoActivity extends Activity {
@@ -80,8 +72,9 @@ public class PayDemoActivity extends Activity {
                     else if (result.equals(WDPayResult.RESULT_CANCEL))
                         Toast.makeText(PayDemoActivity.this, "用户取消支付", Toast.LENGTH_LONG).show();
                     else if(result.equals(WDPayResult.RESULT_FAIL)) {
-                        Toast.makeText(PayDemoActivity.this, "支付失败, 原因: " + bcPayResult.getErrMsg()
-                                + ", " + bcPayResult.getDetailInfo(), Toast.LENGTH_LONG).show();
+                    	String info = "支付失败, 原因: " + bcPayResult.getErrMsg()
+                                + ", " + bcPayResult.getDetailInfo();
+                        Toast.makeText(PayDemoActivity.this, info, Toast.LENGTH_LONG).show();
                     } else if(result.equals(WDPayResult.FAIL_UNKNOWN_WAY)){
                     	Toast.makeText(PayDemoActivity.this, "未知支付渠道", Toast.LENGTH_LONG).show();
                     } else if(result.equals(WDPayResult.FAIL_WEIXIN_VERSION_ERROR)){
@@ -127,17 +120,11 @@ public class PayDemoActivity extends Activity {
     		
     	};
     };
-    
- 
-    
-    
 	private EditText mGoodsMoney;
 	private EditText mGoodsTitle;
 	private EditText mGoodsTitleDesc;
 	private EditText mOrderTitle;
 	private EditText mOrderTitleDesc;
-
-
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,11 +134,10 @@ public class PayDemoActivity extends Activity {
         // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 、 第三个参数设置日志是否打印
         CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB", true);
         
-        
         payMethod = (ListView) this.findViewById(R.id.payMethod);
-        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay,R.drawable.ic_launcher};
-        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈","链支付"};
-        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用链支付，以人民币CNY计费"};
+        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
+        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈","链支付","链支付UI反馈"};
+        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用链支付，以人民币CNY计费", "使用链支付，以人民币CNY计费"};
         PayMethodListItem adapter = new PayMethodListItem(this, payIcons, payNames, payDescs);
         payMethod.setAdapter(adapter);
         
@@ -169,12 +155,9 @@ public class PayDemoActivity extends Activity {
         loadingDialog.setMessage("启动第三方支付，请稍候...");
         loadingDialog.setIndeterminate(true);
         loadingDialog.setCancelable(true);
-        
-        
         payMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            	
             	String money = mGoodsMoney.getText().toString().trim();
             	String goodsTitle = mGoodsTitle.getText().toString().trim();
             	String goodsDesc = mGoodsTitleDesc.getText().toString().trim();
@@ -188,17 +171,11 @@ public class PayDemoActivity extends Activity {
             		Toast.makeText(PayDemoActivity.this, "请输入正确的交易金额（单位：分）", Toast.LENGTH_LONG).show();
             		return;
             	}
-            	
-            	
                 switch (position) {
                     case 0: //微信
                         loadingDialog.show();
                         //对于微信支付, 手机内存太小会有OutOfResourcesException造成的卡顿, 以致无法完成支付
                         //这个是微信自身存在的问题
-                        Map<String, String> mapOptional = new HashMap<String, String>();
-
-                        mapOptional.put("testkey1", "测试value值1");   //map的key暂时不支持中文
-                        
                         WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wepay, submerno,
                         		goodsTitle,               //订单标题
                     			goodsDesc,
@@ -226,11 +203,6 @@ public class PayDemoActivity extends Activity {
 
                     case 2: //支付宝支付
                         loadingDialog.show();
-
-                        mapOptional = new HashMap<String, String>();
-                        mapOptional.put("paymentid", "2015090600255180");
-                        mapOptional.put("consumptioncode", "consumptionCode");
-                        mapOptional.put("money", "2");
                         
                         WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.alipay, submerno,
                         		goodsTitle,               //订单标题
@@ -246,12 +218,6 @@ public class PayDemoActivity extends Activity {
                     case 3: //支付宝支付
                     	loadingDialog.show();
                     	
-                    	mapOptional = new HashMap<String, String>();
-                    	mapOptional.put("paymentid", "2015090600255180");
-                    	mapOptional.put("consumptioncode", "consumptionCode");
-                    	mapOptional.put("money", "2");
-                    	
-                    	
                     	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.alipay, submerno,
                     			goodsTitle,               //订单标题
                     			goodsDesc,
@@ -264,11 +230,6 @@ public class PayDemoActivity extends Activity {
                     	break;
                     case 4: //银联支付
                     	loadingDialog.show();
-                    	
-                    	mapOptional = new HashMap<String, String>();
-                    	mapOptional.put("paymentid", "2015090600255180");
-                    	mapOptional.put("consumptioncode", "consumptionCode");
-                    	mapOptional.put("money", "2");
                     	
                     	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.uppay, 
                     			submerno,
@@ -299,7 +260,7 @@ public class PayDemoActivity extends Activity {
                     case 6: //链支付
                     	loadingDialog.show();
                     	
-                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wonderspay, 
+                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wdepay, 
                     			submerno,
                     			goodsTitle,               //订单标题
                     			goodsDesc,
@@ -308,6 +269,20 @@ public class PayDemoActivity extends Activity {
                     			orderDesc,
                     			null,            //扩展参数(可以null)
                     			bcCallback);
+                    	
+                    	break;
+                    case 7: //链支付
+                    	loadingDialog.show();
+                    	
+                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wdepay, 
+                    			submerno,
+                    			goodsTitle,               //订单标题
+                    			goodsDesc,
+                    			i,                           //订单金额(分)
+                    			orderTitle,  //订单流水号
+                    			orderDesc,
+                    			null,            //扩展参数(可以null)
+                    			handler);
                     	
                     	break;
                     default:
