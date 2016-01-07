@@ -3,12 +3,6 @@ package cn.paydemo;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.http.HttpResponse;
-
-import cn.paydemo.appnative.PayDemoActivity;
-import cn.paydemo.net.WDHttpClientUtil;
-import cn.paydemo.web.PayWebActivity;
-import cn.wd.checkout.WDSecurityUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
+import cn.paydemo.appnative.PayDemoActivity;
 
 public class MainActivity extends Activity implements OnClickListener,
 		OnItemClickListener {
