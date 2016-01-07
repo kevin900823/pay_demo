@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    tools:context=".LPFragmentActivity" >
+
+   <FrameLayout
+        android:id="@+id/fragment_lian_pay"
+        android:name="cn.wanda.lianpay.fragment.LPOrderFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

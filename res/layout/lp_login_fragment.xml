@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#000" >
+
+        <Button
+            android:id="@+id/btn_login_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"
+            android:text="返回"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/tv_order_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00000000"
+            android:gravity="center"
+            android:text="链支付移动支付登陆"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="链支付"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="40dp"
+        android:typeface="monospace"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/edt_login_account"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:gravity="center_vertical|left"
+            android:hint="登陆账号"
+            android:singleLine="true"
+            android:textColorHint="#ccc" />
+
+        <cn.passguard.PassGuardEdit
+            android:id="@+id/pge_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:gravity="center_vertical|left"
+            android:hint="请输入登陆密码"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColorHint="#ccc" />
+        <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="#fff"
+        android:background="#019fee"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:text="登	陆" />
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="#ccc"
+            />
+    </LinearLayout>
+
+</LinearLayout>
