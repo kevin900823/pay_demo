@@ -18,12 +18,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 import cn.paydemo.PayMethodListItem;
 import cn.paydemo.R;
-import cn.wd.checkout.CheckOut;
-import cn.wd.checkout.WDPay;
-import cn.wd.checkout.processor.WDCallBack;
-import cn.wd.checkout.processor.WDPayResult;
-import cn.wd.checkout.processor.WDReqParams;
-import cn.wd.checkout.processor.WDResult;
+import cn.wd.checkout.api.CheckOut;
+import cn.wd.checkout.api.WDCallBack;
+import cn.wd.checkout.api.WDPay;
+import cn.wd.checkout.api.WDPayResult;
+import cn.wd.checkout.api.WDReqParams;
+import cn.wd.checkout.api.WDResult;
 
 public class PayDemoActivity extends Activity {
 
@@ -131,8 +131,6 @@ public class PayDemoActivity extends Activity {
         setContentView(R.layout.activity_native_pay);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         
-        // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 、 第三个参数设置日志是否打印
-        CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB", true);
         
         payMethod = (ListView) this.findViewById(R.id.payMethod);
         Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
@@ -158,6 +156,14 @@ public class PayDemoActivity extends Activity {
         payMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            	
+
+                // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 
+            	// appId     appid 统一收银台签约获取 id唯一
+                // appSecret App Secret 统一收银台签约获取 不唯一 每天都会重新生成 故需要每次设置
+                CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB");
+                CheckOut.setIsPrint(true);
+            	
             	String money = mGoodsMoney.getText().toString().trim();
             	String goodsTitle = mGoodsTitle.getText().toString().trim();
             	String goodsDesc = mGoodsTitleDesc.getText().toString().trim();
