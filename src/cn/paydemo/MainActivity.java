@@ -84,8 +84,8 @@ public class MainActivity extends Activity implements OnClickListener,
 		}
 	}
 //	private static final String DEFAULT_URL = "http://10.1.64.205:18001/WebCashierDesk/text.jsp"; 
-//	private static final String DEFAULT_URL = "http://cashtest.wdepay.cn/WebCashierDesk/text.jsp" ;
-  private static final String DEFAULT_URL = "http://cash.wdepay.cn/WebCashierDesk/text.jsp" ;
+	private static final String DEFAULT_URL = "http://cashtest.wdepay.cn:20080/WebCashierDesk/text.jsp" ;
+//  private static final String DEFAULT_URL = "http://cash.wdepay.cn:20080/WebCashierDesk/text.jsp" ;
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub

@@ -72,6 +72,15 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         
+        <!-- 链支付 -->
+        <activity 
+            android:name="cn.wanda.lianpay.LPFragmentActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            ></activity>
+        
     </application>
 
 </manifest>
