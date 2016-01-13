@@ -131,6 +131,8 @@ public class PayDemoActivity extends Activity {
         setContentView(R.layout.activity_native_pay);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         
+     
+        
         
         payMethod = (ListView) this.findViewById(R.id.payMethod);
         Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
@@ -157,12 +159,12 @@ public class PayDemoActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             	
-
-                // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 
+            	// 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 
             	// appId     appid 统一收银台签约获取 id唯一
                 // appSecret App Secret 统一收银台签约获取 不唯一 每天都会重新生成 故需要每次设置
                 CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB");
                 CheckOut.setIsPrint(true);
+                
             	
             	String money = mGoodsMoney.getText().toString().trim();
             	String goodsTitle = mGoodsTitle.getText().toString().trim();
