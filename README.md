@@ -10,8 +10,13 @@ Android SDK 要求 Android 2.3 及以上版本
 ## 注意事项
 该SDK可能会与其他第三方jar包冲突，当同时使用这些jar包的时候用户需要根据情况判断保留哪一方的jar包。 libs 目录下的是 jar 文件。
 
-## 版本1.0.3
+## 版本1.0.3_v1
 待更新
+
+###	2016-01-14
+*  替换统一收银台SDK包 拆分收银台appId参数设置方法 setAppIdAndSecret()
+*  更改包名
+*  更新版本1.0.3_v1
 
 ## 配置初始化
 依赖包<br>
@@ -234,7 +239,22 @@ Android SDK 目前适用于 alipay（支付宝）、weixin（微信）、uppay�
 
 ## 工程混淆
 
- 详见demo中 proguard-project.txt 文件。
+
+# ########## 统一收银台   ###########
+	-dontwarn cn.wd.checkout.api.**
+	-keep class cn.wd.checkout.api.** {*;}
+	-keep class cn.wd.checkout.processor.** {*;}
+
+# ########## gson ##########
+	-keep class com.google.**{*;}
+
+# ########## 链支付 ##########
+	-dontwarn cn.wanda.lianpay.**
+	-keep class cn.wanda.lianpay.** {*;}
+	-keep class cn.wanda.processor.** {*;}
+	-keep class cn.wanda.support.** {*;}
+
+ 其它支付平台请参照官网提供文件。详见demo中 proguard-project.txt 文件。
 
 
 
