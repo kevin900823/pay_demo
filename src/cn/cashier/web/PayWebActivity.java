@@ -1,6 +1,6 @@
-package cn.paydemo.web;
+package cn.cashier.web;
 
-import cn.paydemo.R;
+import cn.cashier.R;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -17,8 +17,8 @@ import android.webkit.WebViewClient;
 public class PayWebActivity extends Activity {
 	
 //	private static final String DEFAULT_URL = "http://10.1.64.205:18001/WebCashierDesk/text.jsp"; 
-	private static final String DEFAULT_URL = "http://cashtest.wdepay.cn:20080/WebCashierDesk/text.jsp" ;
-//  private static final String DEFAULT_URL = "http://cash.wdepay.cn/WebCashierDesk/text.jsp" ;
+//	private static final String DEFAULT_URL = "http://cashtest.wdepay.cn:20080/WebCashierDesk/text.jsp" ;
+  private static final String DEFAULT_URL = "http://cash.wdepay.cn/WebCashierDesk/text.jsp" ;
 	
 	private WebView pw_WV;
 

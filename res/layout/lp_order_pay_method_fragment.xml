@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#000" >
+
+        <Button
+            android:id="@+id/btn_method_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"
+            android:text="返回"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/tv_method_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00000000"
+            android:gravity="center"
+            android:text="付款详情"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="#ccc" />
+
+    <ListView
+        android:id="@+id/lv_method_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#eee"
+        android:dividerHeight="1dp"
+        android:background="#fff" >
+    </ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ccc" />
+
+</LinearLayout>

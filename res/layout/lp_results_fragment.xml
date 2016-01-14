@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:orientation="vertical" >
+    
+     <RelativeLayout 
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:background="#000"
+        >
+        <Button
+            android:id="@+id/btn_result_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:textColor="#fff"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"
+            android:gravity="center"
+            android:text="完成" />
+        <TextView
+            android:id="@+id/tv_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00000000"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="付款详情" />
+    </RelativeLayout>
+    
+     <View 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#ccc"
+            />
+     <RelativeLayout 
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+         android:layout_marginRight="20dp"
+         android:paddingTop="40dp"
+         android:paddingBottom="40dp"
+         android:background="#fff"
+         >
+         <TextView 
+             android:id="@+id/tv_result_info"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerInParent="true"
+             android:textColor="#000"
+             android:textSize="20sp"
+             android:textStyle="bold"
+             android:text="支付结果"
+             />
+     </RelativeLayout>
+     <View 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#ccc"
+            />
+
+</LinearLayout>

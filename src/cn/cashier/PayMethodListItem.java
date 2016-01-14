@@ -4,8 +4,9 @@
  * Created by xuanzhui on 2015/8/20.
  * Copyright (c) 2015 BeeCloud. All rights reserved.
  */
-package cn.paydemo;
+package cn.cashier;
 
+import cn.cashier.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
