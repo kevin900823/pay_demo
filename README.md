@@ -64,8 +64,9 @@ android:windowSoftInputMode="adjustResize|stateHidden" />
 
 ##开始接入<br>
 ~~~java 
-  // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 、 第三个参数设置日志是否打印
-  CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB", true);
+  // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 
+  CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB");
+  
 ~~~
 
 ##发起支付
