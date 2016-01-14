@@ -1,4 +1,4 @@
-package cn.paydemo.appnative;
+package cn.cashier.appnative;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,8 +16,8 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-import cn.paydemo.PayMethodListItem;
-import cn.paydemo.R;
+import cn.cashier.PayMethodListItem;
+import cn.cashier.R;
 import cn.wd.checkout.api.CheckOut;
 import cn.wd.checkout.api.WDCallBack;
 import cn.wd.checkout.api.WDPay;
@@ -135,9 +135,9 @@ public class PayDemoActivity extends Activity {
         
         
         payMethod = (ListView) this.findViewById(R.id.payMethod);
-        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
-        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈","链支付","链支付UI反馈"};
-        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用链支付，以人民币CNY计费", "使用链支付，以人民币CNY计费"};
+        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay};//,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
+        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈"};//,"链支付","链支付UI反馈"};
+        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费"};//, "使用链支付，以人民币CNY计费（暂不使用）", "使用链支付，以人民币CNY计费（暂不使用）"};
         PayMethodListItem adapter = new PayMethodListItem(this, payIcons, payNames, payDescs);
         payMethod.setAdapter(adapter);
         

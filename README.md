@@ -231,7 +231,9 @@ Android SDK 目前适用于 alipay（支付宝）、weixin（微信）、uppay�
 * alipay -- WDReqParams.WDChannelTypes.alipay<br>
 * uppay -- WDReqParams.WDChannelTypes.uppay
 
+## 工程混淆
 
+ 详见demo中 proguard-project.txt 文件。
 
 
 
