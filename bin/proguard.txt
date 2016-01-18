@@ -1,25 +1,25 @@
-# view AndroidManifest.xml #generated:23
+# view AndroidManifest.xml #generated:24
 -keep class cn.cashier.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:33
+# view AndroidManifest.xml #generated:34
 -keep class cn.cashier.appnative.PayDemoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:38
+# view AndroidManifest.xml #generated:39
 -keep class cn.cashier.web.PayWebActivity { <init>(...); }
 
 # view res/layout/lp_login_fragment.xml #generated:72
 # view res/layout/lp_order_fragment.xml #generated:180
 -keep class cn.passguard.PassGuardEdit { <init>(...); }
 
-# view AndroidManifest.xml #generated:76
+# view AndroidManifest.xml #generated:77
 -keep class cn.wanda.lianpay.LPFragmentActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:68
+# view AndroidManifest.xml #generated:69
 -keep class cn.wd.checkout.WDUnionPaymentActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:45
+# view AndroidManifest.xml #generated:46
 -keep class cn.wd.checkout.api.WDWechatPaymentActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:59
+# view AndroidManifest.xml #generated:60
 -keep class com.alipay.sdk.app.H5PayActivity { <init>(...); }
 
