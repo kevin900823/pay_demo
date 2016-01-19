@@ -11,12 +11,23 @@ Android SDK 要求 Android 2.3 及以上版本
 该SDK可能会与其他第三方jar包冲突，当同时使用这些jar包的时候用户需要根据情况判断保留哪一方的jar包。 libs 目录下的是 jar 文件。
 
 
+<<<<<<< HEAD
 ## 版本1.0.3_v2
 待更新
 ### 2016-01-16
 *  替换统一收银台SDK包，更改网络请求端口
 *  libs/checkout_ct-20160113.jar 替换为 checkout_ct-20160116.jar
 *  更新版本：1.0.3_v2
+=======
+## 版本1.0.3_v3
+待更新
+
+### 2016-01-19
+*  增加新方法 设置网络请求环境
+*  详见开始接入
+*  更新版本1.0.3_v3
+
+>>>>>>> lianzhifu
 ###	2016-01-14
 *  替换统一收银台SDK包 拆分收银台appId参数设置方法 setAppIdAndSecret()
 *  更改包名
@@ -75,6 +86,11 @@ android:windowSoftInputMode="adjustResize|stateHidden" />
 ~~~java 
   // 在主activity的onCreate函数中初始化账户中的AppID和AppSecret 
   CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB");
+  
+  /**
+    * 设置访问网络环境  CT 为测试环境 不调用此方法为生产环境
+  */
+    CheckOut.setNetworkWay("CT");
   
 ~~~
 

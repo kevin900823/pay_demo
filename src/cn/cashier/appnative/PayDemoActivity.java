@@ -135,9 +135,9 @@ public class PayDemoActivity extends Activity {
         
         
         payMethod = (ListView) this.findViewById(R.id.payMethod);
-        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay};//,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
-        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈"};//,"链支付","链支付UI反馈"};
-        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费"};//, "使用链支付，以人民币CNY计费（暂不使用）", "使用链支付，以人民币CNY计费（暂不使用）"};
+        Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
+        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈","链支付","链支付UI反馈"};
+        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用链支付，以人民币CNY计费（暂不使用）", "使用链支付，以人民币CNY计费（暂不使用）"};
         PayMethodListItem adapter = new PayMethodListItem(this, payIcons, payNames, payDescs);
         payMethod.setAdapter(adapter);
         
@@ -164,7 +164,10 @@ public class PayDemoActivity extends Activity {
                 // appSecret App Secret 统一收银台签约获取 不唯一 每天都会重新生成 故需要每次设置
                 CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB");
                 CheckOut.setIsPrint(true);
-                
+                /**
+                 * 设置访问网络环境  CT 为测试环境 不调用此方法为生产环境
+                 */
+                CheckOut.setNetworkWay("CT");
             	
             	String money = mGoodsMoney.getText().toString().trim();
             	String goodsTitle = mGoodsTitle.getText().toString().trim();
