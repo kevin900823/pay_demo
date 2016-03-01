@@ -1,6 +1,5 @@
 gen
 .svn
 .settings
-bin
 proguard
-
+bin
