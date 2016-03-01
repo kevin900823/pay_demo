@@ -6,6 +6,8 @@ import java.util.Locale;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -136,8 +138,8 @@ public class PayDemoActivity extends Activity {
         
         payMethod = (ListView) this.findViewById(R.id.payMethod);
         Integer[] payIcons = new Integer[]{R.drawable.wechat,R.drawable.wechat, R.drawable.alipay, R.drawable.alipay,R.drawable.unionpay,R.drawable.unionpay,R.drawable.icon_wonderspay,R.drawable.icon_wonderspay};
-        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈","链支付","链支付UI反馈"};
-        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用链支付，以人民币CNY计费（暂不使用）", "使用链支付，以人民币CNY计费（暂不使用）"};
+        final String[] payNames = new String[]{"微信支付","微信支付 UI反馈", "支付宝支付", "支付宝支付 UI反馈", "银联支付", "银联支付 UI反馈","链支付","链支付安装下载"};
+        String[] payDescs = new String[]{"使用微信支付，以人民币CNY计费","使用微信支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用支付宝支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用银联支付，以人民币CNY计费", "使用链支付，以人民币CNY计费", "跳转到浏览器下载安装最新链支付APP"};
         PayMethodListItem adapter = new PayMethodListItem(this, payIcons, payNames, payDescs);
         payMethod.setAdapter(adapter);
         
@@ -165,9 +167,11 @@ public class PayDemoActivity extends Activity {
                 CheckOut.setAppIdAndSecret("wd2015tst001", "6XtC7H8NuykaRv423hrf1gGS09FEZQoB");
                 CheckOut.setIsPrint(true);
                 /**
-                 * 设置访问网络环境  CT 为测试环境 不调用此方法为生产环境
+                 * 设置访问网络环境  CT 为联调测试环境 不调用此方法为生产环境
                  */
-                CheckOut.setNetworkWay("CT");
+                CheckOut.setNetworkWay("CST");
+                CheckOut.setLianNetworkWay("TS");
+                
             	
             	String money = mGoodsMoney.getText().toString().trim();
             	String goodsTitle = mGoodsTitle.getText().toString().trim();
@@ -285,15 +289,22 @@ public class PayDemoActivity extends Activity {
                     case 7: //链支付
                     	loadingDialog.show();
                     	
-                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wdepay, 
-                    			submerno,
-                    			goodsTitle,               //订单标题
-                    			goodsDesc,
-                    			i,                           //订单金额(分)
-                    			orderTitle,  //订单流水号
-                    			orderDesc,
-                    			null,            //扩展参数(可以null)
-                    			handler);
+//                    	WDPay.getInstance(PayDemoActivity.this).reqPayAsync(WDReqParams.WDChannelTypes.wdepay, 
+//                    			submerno,
+//                    			goodsTitle,               //订单标题
+//                    			goodsDesc,
+//                    			i,                           //订单金额(分)
+//                    			orderTitle,  //订单流水号
+//                    			orderDesc,
+//                    			null,            //扩展参数(可以null)
+//                    			handler);
+//                    	http://www.wdepay.cn/MobileFront/user/download/WandaApk.do
+                    	
+                    	Intent intent= new Intent(); 
+        			    intent.setAction("android.intent.action.VIEW");   
+        			    Uri content_url = Uri.parse("http://www.wdepay.cn/MobileFront/user/download/WandaApk.do");   
+        			    intent.setData(content_url);  
+        			    startActivity(intent);
                     	
                     	break;
                     default:
